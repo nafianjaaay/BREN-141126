@@ -1,5 +1,5 @@
 # WHITEPAPER 04: MIKROSTRUKTUR PASAR & VALUASI MULTIPLES PEER
-## Analisis Keterbatasan Free Float (3,01%), Squeeze Likuiditas, dan Ring-Fencing Neraca Induk BREN
+## Analisis Keterbatasan Free Float (3,01%), Likuiditas Pasar, dan Ring-Fencing Neraca Induk BREN
 **Penulis:** Tim Peneliti Keuangan Kelompok 1 — Program Magister Manajemen Teknologi (MMT) Institut Teknologi Sepuluh Nopember (ITS), Surabaya  
 **Entitas Objek:** PT Barito Renewables Energy Tbk (BREN) — Proyek PLTP WKP Hamiding 60 MW & Masterplan 130 MW  
 **Konteks Riset:** Studi Kasus Penganggaran Modal PT Barito Renewables Energy Tbk (BREN) — Mata Kuliah Manajemen Keuangan
@@ -64,7 +64,7 @@ $$\Delta \text{Nilai Intrinsik per Lembar} = \frac{\text{Net Strategic NPV (USD)
    $$\Delta \text{Nilai} = \frac{\text{USD } 222,13\text{M} \times \text{Rp } 16.205}{133.786.220.000} = \mathbf{+\text{Rp } 26,91\text{ per lembar}}$$
 
 #### Kesimpulan Ring-Fencing Korporasi:
-Pelaksanaan proyek melalui SPV terisolasi secara sempurna melindungi pemegang saham publik dari risiko kerugian eksplorasi awal, sementara seluruh potensi peningkatan nilai (*upside optionality*) ekspansi 130 MW mengalir kembali ke nilai kapitalisasi pasar BREN.
+Pelaksanaan proyek melalui struktur pembiayaan SPV *non-recourse* secara efektif melindungi pemegang saham publik dari risiko kerugian eksplorasi awal, sementara potensi peningkatan nilai (*upside optionality*) ekspansi 130 MW tetap mengalir ke nilai ekuitas BREN.
 
 ---
 

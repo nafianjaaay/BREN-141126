@@ -2,19 +2,18 @@
 ## Capital Budgeting Defense, Project Finance Restructuring & Stochastic Real Options Valuation
 ### Studi Kasus Komprehensif: Proyek Pembangkit Listrik Tenaga Panas Bumi (PLTP) WKP Hamiding 60 MW (Masterplan 130 MW)
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
-[![Econometrics Engine](https://img.shields.io/badge/econometrics-Sobol%20QMC%20%7C%20Student--t%20Copula-orange.svg)]()
-[![Valuation](https://img.shields.io/badge/valuation-BSM%20%7C%20LSMC%20Laguerre-purple.svg)]()
-[![Academic Standard](https://img.shields.io/badge/standard-Academic%20Research-red.svg)]()
-[![Defense Ready](https://img.shields.io/badge/status-Audited%20%26%20Public%20Ready-success.svg)]()
+[![Python](https://img.shields.io/badge/python-3.10%2B-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![NumPy](https://img.shields.io/badge/numpy-1.24%2B-013243.svg?logo=numpy&logoColor=white)](https://numpy.org/)
+[![SciPy](https://img.shields.io/badge/scipy-1.10%2B-8CAAE6.svg?logo=scipy&logoColor=white)](https://scipy.org/)
 
 ---
 
-## 📌 Executive Summary
+## Executive Summary
 
 Repositori ini menyajikan program komputasi finansial kuantitatif, simulasi ekonometrika stokastik, serta kertas kerja teknis untuk evaluasi kelayakan investasi **Proyek PLTP WKP Gunung Hamiding 60 MW** (dengan opsi ekspansi masterplan hingga 130 MW) oleh **PT Barito Renewables Energy Tbk (BREN)**. 
 
-Analisis ini mematahkan pendekatan penganggaran modal statis konvensional (*textbook approach*) yang memvonis proyek tidak layak (*unviable*), dan membuktikan secara empiris bahwa proyek ini membukukan **Dynamic Strategic Net Present Value (Expanded NPV) sebesar +USD 80,03 Juta hingga +USD 222,13 Juta**, dengan **Equity Internal Rate of Return (IRR) sebesar 14,39%**, jauh melampaui biaya modal tertimbang proyek (*hurdle rate* WACC 7,10%).
+Kajian ini merekonstruksi parameter penganggaran modal statis konvensional (*textbook approach*) yang mengabaikan fleksibilitas manajerial dan struktur pembiayaan terpisah. Melalui integrasi pemodelan *Non-Recourse Project Finance*, ekonometrika stokastik (Sobol QMC & Student-t Copula), serta valuasi opsi riil (BSM & LSMC), proyek ini menghasilkan **Dynamic Strategic Net Present Value (Expanded NPV) sebesar +USD 80,03 Juta hingga +USD 222,13 Juta** dengan **Equity Internal Rate of Return (IRR) sebesar 14,39%**, melampaui biaya modal tertimbang proyek (*hurdle rate* WACC 7,10%).
 
 <p align="center">
   <img src="grafik/Gambar_8_Tornado_Diagram_Sensitivitas_NPV.png" width="48%" alt="Tornado Diagram Sensitivitas NPV" />
@@ -23,7 +22,7 @@ Analisis ini mematahkan pendekatan penganggaran modal statis konvensional (*text
 
 ---
 
-## 📊 Ringkasan Metrik Finansial Komparatif
+## Ringkasan Metrik Finansial Komparatif
 
 | Parameter Evaluasi Finansial | Pendekatan Silabus Kasus (Buku Teks Statis) | Rekonstruksi Finansial Terverifikasi (Kelompok 1) | Varian Deviasi | Dasar Regulasi / Rujukan Ilmiah | Skrip Replikasi |
 | :--- | :---: | :---: | :---: | :--- | :--- |
@@ -42,21 +41,15 @@ Analisis ini mematahkan pendekatan penganggaran modal statis konvensional (*text
 
 ---
 
-## 🎯 5 Tesis Utama Pertahanan Finansial & Modul Analisis Visual
+## 5 Pilar Analisis Finansial Terpadu & Modul Visual
 
-```
-                     ┌─────────────────────────────────────────────────────────┐
-                     │          EVALUASI SILABUS STATIS vs KELOMPOK 1          │
-                     └─────────────────────────────────────────────────────────┘
-                                                  │
-         ┌───────────────────┬────────────────────┼───────────────────┬───────────────────┐
-         ▼                   ▼                    ▼                   ▼                   ▼
-   [TESIS 1: CAPEX]    [TESIS 2: AKUNTANSI]  [TESIS 3: WACC]     [TESIS 4: PASAR]    [TESIS 5: DIVIDEN]
-   Stage-Gated         PSAK 216 / IAS 16     Non-Recourse        Cornered Float      Residual Dividend
-   De-risking          AUC Depresiasi $0     Project Finance     3,01% Free Float    Preservasi Solvabilitas
-   Opsi Riil 130 MW    Tanah Non-Depr.       WACC 7,10%          Nilai Intrinsik     GGM USD 119,17M
-   BSM: +USD 192,8M    Zero Saji Material    Tax Holiday 10 th   +Rp 14,70/saham     Validasi 30 Thn
-```
+| Pilar Analisis | Rekonstruksi Metodologis | Landasan Regulasi & Teori | Dampak Finansial & Valuasi |
+| :--- | :--- | :--- | :--- |
+| **1. Belanja Modal & Opsi Riil** | *Stage-gated de-risking* & ekspansi masterplan 130 MW | Teori Opsi Riil (Black-Scholes-Merton & LSMC) | Nilai Opsi BSM: +USD 192,79M (PV +USD 142,10M) |
+| **2. Tata Kelola Akuntansi** | Aset Dalam Penyelesaian (AUC) & kapitalisasi bunga IDC | PSAK 216 / IAS 16 & PSAK 223 / IAS 23 | Eliminasi distorsi laba, bebas salah saji material |
+| **3. Struktur Modal & WACC** | *Non-recourse project finance* (70% Utang : 30% Ekuitas) | Model Hamada, Green Sindikasi, PMK 130/2020 | WACC turun ke 7,10%, Tax Holiday +USD 24,20M |
+| **4. Mikrostruktur Pasar** | Free float 3,01% & isolasi risiko neraca induk | Analisis Likuiditas & Valuasi Multiples Peer | Nilai intrinsik +Rp 4,52 s.d. +Rp 26,91/saham |
+| **5. Kebijakan Dividen** | Dividen residual pasca-COD & cadangan DSRA 6 bulan | UU No. 40/2007 (PT) & Kovenan DSCR $\ge 1,30\times$ | Gordon Growth Model USD 119,17M (PV USD 78,50M) |
 
 ---
 
@@ -159,7 +152,7 @@ Analisis ini mematahkan pendekatan penganggaran modal statis konvensional (*text
 
 ---
 
-## 🏗️ Struktur Repositori Terbuka
+## Struktur Repositori Terbuka
 
 ```
 BREN-141126/
@@ -206,7 +199,7 @@ BREN-141126/
 
 ---
 
-## ⚡ Panduan Replikasi Cepat (Quickstart)
+## Panduan Replikasi Cepat
 
 Seluruh program model finansial dan simulasi dapat dijalankan secara langsung dengan langkah-langkah berikut:
 
@@ -241,7 +234,7 @@ python models/05_finite_gordon_dividend.py
 
 ---
 
-## 📜 Kepatuhan Regulasi dan Standar Hukum Republik Indonesia
+## Kerangka Regulasi dan Standar Hukum Republik Indonesia
 
 1. **Undang-Undang Nomor 21 Tahun 2014 tentang Panas Bumi:** Landasan legal pelepasan panas bumi dari rezim pertambangan mineral serta pemberian izin pengusahaan panas bumi terpadu hulu-ke-hilir.
 2. **Peraturan Presiden Nomor 112 Tahun 2022 tentang Percepatan Pengembangan EBT:** Penetapan skema kontrak jual beli tenaga listrik jangka panjang 30 tahun berbasis *Take-or-Pay* berdenominasi USD tanpa risiko eskalasi penurunan tarif, didukung penjaminan pemerintah melalui PT Penjaminan Infrastruktur Indonesia (Persero).
@@ -251,7 +244,7 @@ python models/05_finite_gordon_dividend.py
 
 ---
 
-## 👥 Tim Peneliti Akademik
+## Tim Peneliti Akademik
 
 **Program Magister Manajemen Teknologi (MMT)**  
 **Institut Teknologi Sepuluh Nopember (ITS), Surabaya**
@@ -262,5 +255,5 @@ python models/05_finite_gordon_dividend.py
 
 ---
 
-## 📄 Lisensi
+## Lisensi
 Seluruh kode pemodelan, skrip simulasi, dan kertas kerja teknis pada repositori ini dilisensikan di bawah [MIT License](LICENSE). Repositori ini didedikasikan untuk keterbukaan ilmu pengetahuan (*Open Science*) dan reproduksibilitas pemodelan keuangan kuantitatif.

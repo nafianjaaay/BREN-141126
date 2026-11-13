@@ -6,7 +6,7 @@
 
 ---
 
-### 1. Landasan Teoretis: Kegagalan DCF Tradisional pada Ketidakpastian Bertingkat
+### 1. Landasan Teoretis: Keterbatasan DCF Tradisional dalam Menilai Fleksibilitas Bertingkat
 
 Analisis Arus Kas Terdiskonto (*Discounted Cash Flow* / DCF) konvensional mengasumsikan bahwa manajemen bersifat pasif: keputusan investasi diambil sekali di masa awal ($t=0$) dan tidak dapat diubah sepanjang umur ekonomis proyek.
 
@@ -79,7 +79,7 @@ $$V_{\text{abandon}} = \mathbf{+\text{USD } 28,40\text{ Juta}}$$
 | **Insentif Tax Holiday** | PMK 130/2020 (10 Tahun PPh 0%) | $+\text{USD } 24,20\text{M}$ | Memaksimalkan arus kas awal |
 | **Monetisasi Karbon** | SPE-GRK IDXCarbon (POJK 14/2023) | $+\text{USD } 18,52\text{M}$ | Menangkap pendapatan sampingan hijau |
 | **Opsi Riil Ekspansi** | BSM & LSMC (Masterplan 130 MW) | $+\text{USD } 142,10\text{M}$ | Menangkap nilai upside tersembunyi |
-| **Total Strategic NPV** | **Valuation Waterfall Terpadu** | $\mathbf{+\text{USD } 222,13\text{M}}$ | **Keputusan: SANGAT LAYAK (INVEST)** |
+| **Total Strategic NPV** | **Valuation Waterfall Terpadu** | $\mathbf{+\text{USD } 222,13\text{M}}$ | **Keputusan: Layak Diinvestasikan (Invest)** |
 
 ---
 

@@ -6,14 +6,14 @@
 
 ---
 
-### 1. Eksekutif Ringkasan: Pembongkaran Asumsi Cacat Silabus
+### 1. Evaluasi Kritis atas Asumsi Silabus Konvensional
 
-Dalam silabus penganggaran modal konvensional, terdapat beberapa asumsi implisit yang bertentangan secara frontal dengan standar akuntansi keuangan (Standar Akuntansi Keuangan / SAK berbasis IFRS) serta hukum korporasi Indonesia:
-1. **Asumsi Beban Penyusutan Dimulai pada Masa Konstruksi:** Silabus menyusutkan belanja modal USD 720 Juta sejak Tahun ke-1 konstruksi.
-2. **Asumsi Pembagian Dividen Sebelum Proyek Beroperasi:** Silabus memodelkan arus kas dividen ekuitas sejak fase konstruksi berjalan.
-3. **Pencatatan Bunga Pinjaman sebagai Beban Kas Operasional Berjalan:** Mengabaikan kapitalisasi bunga konstruksi (*Interest During Construction* / IDC).
+Dalam silabus penganggaran modal konvensional, terdapat beberapa asumsi implisit yang tidak selaras dengan Standar Akuntansi Keuangan (SAK berbasis IFRS) serta ketentuan hukum perseroan terbatas di Indonesia:
+1. **Asumsi Beban Penyusutan Dimulai pada Masa Konstruksi:** Silabus memperhitungkan depresiasi belanja modal USD 720 Juta sejak Tahun ke-1 konstruksi.
+2. **Asumsi Pembagian Dividen Sebelum Proyek Beroperasi:** Silabus memodelkan arus kas dividen ekuitas saat proyek masih dalam fase konstruksi.
+3. **Pencatatan Bunga Pinjaman sebagai Beban Operasional Berjalan:** Mengabaikan kapitalisasi bunga masa konstruksi (*Interest During Construction* / IDC).
 
-Whitepaper ini membuktikan secara yuridis dan akuntansi standar mengapa asumsi-asumsi tersebut salah fatal dan bagaimana Kelompok 1 merekonstruksinya secara patuh asas (*fully compliant*).
+Whitepaper ini menguraikan landasan regulasi akuntansi dan hukum mengapa perlakuan tersebut perlu disesuaikan agar memenuhi prinsip kepatuhan dan kewajaran pelaporan keuangan.
 
 ---
 
@@ -47,7 +47,7 @@ Proyek PLTP Hamiding merupakan **aset kualifikasian (*qualifying asset*)** karen
 #### A. Landasan Hukum Perseroan Terbatas (UU No. 40 Tahun 2007)
 Berdasarkan **Pasal 70 dan 71 UU No. 40 Tahun 2007 tentang Perseroan Terbatas**:
 - Dividen hanya boleh dibagikan apabila perseroan mempunyai saldo laba positif (*positive retained earnings*).
-- Selama masa konstruksi (2026–2029), SPV proyek belum menghasilkan pendapatan operasional (pendapatan kas = USD 0,00). Membagikan dividen pada fase ini merupakan tindakan **dividen likuidasi ilegal** (*illegal return of capital*) yang membatalkan tanggung jawab terbatas pemegang saham dan melanggar hukum perdata Indonesia.
+- Selama masa konstruksi (2026–2029), SPV proyek belum menghasilkan pendapatan operasional (pendapatan kas = USD 0,00). Membagikan dividen pada fase ini bertentangan dengan ketentuan hukum permodalan perseroan (*unauthorized return of capital*) karena perseroan belum memiliki saldo laba positif.
 
 #### B. Kovenan Utang Sindikasi Hijau (*Green Syndicated Loan Covenants*)
 Perjanjian kredit pembiayaan proyek (*Credit Agreement*) dengan konsorsium perbankan multinasional secara tegas memuat klausul:

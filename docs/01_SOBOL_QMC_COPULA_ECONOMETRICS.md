@@ -10,7 +10,7 @@
 
 Dalam penganggaran modal konvensional (termasuk model silabus akademis standar), analisis kelayakan proyek sering kali disederhanakan dengan asumsi deterministik linier. Pendekatan tersebut menggunakan parameter statis tunggal untuk tarif listrik, faktor kapasitas, biaya modal, dan biaya operasional.
 
-Pendekatan statis ini mengandung cacat metodologis fundamental ketika diterapkan pada proyek panas bumi (*geothermal energy*) karena:
+Pendekatan statis ini memiliki keterbatasan metodologis yang signifikan ketika diterapkan pada proyek panas bumi (*geothermal energy*) karena:
 1. **Ketidakpastian Termal Bawah Permukaan (*Subsurface Thermal Uncertainty*):** Entalpi fluida hidrotermal ($kJ/kg$) dan laju penurunan tekanan reservoir (*drawdown*) bersifat non-linier dan stokastik.
 2. **Ketergantungan Ekor Gemuk (*Heavy-Tail Correlation*):** Kejadian ekstrem (misalnya depresiasi tajam nilai tukar rupiah bertepatan dengan kenaikan biaya pemboran) memiliki probabilitas kemunculan yang jauh lebih tinggi daripada asumsi distribusi Normal Gauss standar.
 3. **Ketidakefisienan Sampling Pseudo-Random:** Generator bilangan acak semu (PRNG) standar menghasilkan *clustering* (pengelompokan data) dan *gaps* (kekosongan ruang) pada dimensi tinggi, memperlambat tingkat konvergensi galat hingga $O(N^{-1/2})$.
@@ -71,9 +71,9 @@ TEMUAN EKONOMETRIKA STOKASTIK KELOMPOK 1:
 ================================================================================
 ```
 
-#### Implikasi Strategis bagi Komite Investasi BREN:
-1. **Model Statis Silabus Sangat Menyesatkan:** Probabilitas bahwa proyek menghasilkan nilai tambah di bawah struktur statis silabus hanya **4,8%**. Menjalankan proyek tanpa restrukturisasi modal dan instrumen opsi riil adalah tindakan spekulatif berisiko tinggi.
-2. **Mitigasi Terintegrasi Membalikkan Asimetri:** Dengan menerapkan skema pembiayaan proyek (*non-recourse project finance* 70:30), fasilitas *tax holiday* 10 tahun (PMK 130/2020), dan monetisasi kredit karbon, probabilitas sukses melonjak drastis menjadi **73,8%**.
+#### Implikasi Finansial bagi Evaluasi Investasi BREN:
+1. **Keterbatasan Pendekatan Deterministik Statis:** Probabilitas proyek menghasilkan nilai tambah di bawah struktur statis silabus hanya **4,8%**. Menjalankan proyek tanpa pembiayaan terstruktur dan instrumen mitigasi menghadirkan risiko tinggi bagi ekuitas holding.
+2. **Mitigasi Terintegrasi Memperbaiki Profil Risiko:** Dengan menerapkan skema pembiayaan proyek (*non-recourse project finance* 70:30), fasilitas *tax holiday* 10 tahun (PMK 130/2020), dan monetisasi kredit karbon, probabilitas sukses meningkat signifikan menjadi **73,8%**.
 3. **Penyangga Risiko Ekuitas Terjamin:** Risiko kerugian ekuitas maksimum pada tingkat keyakinan 95% adalah **USD 71,0 Juta**, terlindungi sepenuhnya oleh arus kas operasional entitas induk dan cadangan kas SPV Hamiding.
 
 ---
