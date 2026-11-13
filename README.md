@@ -161,18 +161,23 @@ BREN-141126/
 ├── LICENSE                                    # Lisensi terbuka MIT License
 ├── .gitignore                                 # Filter privasi berkas internal & rahasia
 │
-├── models/                                    # Program Komputasi Finansial & Ekonometrika Mandiri
-│   ├── 01_project_finance_dcf.py              # DCF 30 tahun, sindikasi utang, WACC 7,10%
-│   ├── 02_monte_carlo_sobol_copula.py         # Sobol QMC (16.384 run), Copula, MCMC
-│   ├── 03_real_options_lsmc_bsm.py            # BSM formula & LSMC Laguerre degree 2
-│   ├── 04_market_microstructure_float.py      # Cornered market, free float 3,01%, EVA
-│   └── 05_finite_gordon_dividend.py           # Finite GGM 30 tahun vs residual policy
+├── models/                                    # Modul Komputasi Finansial & Ekonometrika Tergeneralisasi
+│   ├── 01_project_finance_dcf.py              # DCF 30 tahun, sindikasi utang, WACC 7,10% (ProjectFinanceModel)
+│   ├── 02_monte_carlo_sobol_copula.py         # Sobol QMC (16.384 run), Copula, MCMC (SobolCopulaSimulator)
+│   ├── 03_real_options_lsmc_bsm.py            # BSM formula & LSMC Laguerre degree 2 (RealOptionsEngine)
+│   ├── 04_market_microstructure_float.py      # Cornered market, free float 3,01%, EVA (MarketMicrostructureAnalyzer)
+│   └── 05_finite_gordon_dividend.py           # Finite GGM 30 tahun vs residual policy (DividendPolicyModel)
+│
+├── tests/                                     # Rangkaian Uji Kuantitatif & Verifikasi Otomatis
+│   └── test_models.py                         # 9/9 Automated Unit & Regression Tests (pytest)
 │
 ├── docs/                                      # Hasil Analisis Mendalam & Kertas Kerja Teknis
 │   ├── 01_SOBOL_QMC_COPULA_ECONOMETRICS.md    # Penurunan matematis konvergensi Sobol QMC
 │   ├── 02_REAL_OPTIONS_MATHEMATICAL_PROOF.md  # Derivasi algoritma LSMC polinomial Laguerre
 │   ├── 03_ACCOUNTING_TREATMENT_PSAK216.md     # Rekonsiliasi akuntansi kapitalisasi IDC/AUC
-│   └── 04_MARKET_MICROSTRUCTURE_CORNERED.md   # Kajian empiris likuiditas FTSE Russell BREN
+│   ├── 04_MARKET_MICROSTRUCTURE_CORNERED.md   # Kajian empiris likuiditas FTSE Russell BREN
+│   ├── QUANT_MODELS_ARCHITECTURE_SPEC.md      # Spesifikasi arsitektur perangkat lunak kuantitatif
+│   └── QA_VERIFICATION_REPORT.md              # Laporan audit independen dan verifikasi forensik
 │
 └── grafik/                                    # 20 Visualisasi & Diagram Analisis Resolusi Tinggi
     ├── Gambar_1_Perbandingan_Multiples_BREN_vs_Peers.png
@@ -230,6 +235,11 @@ python models/04_market_microstructure_float.py
 
 # 5. Menjalankan model Finite Gordon Growth Model & kebijakan dividen residual
 python models/05_finite_gordon_dividend.py
+```
+
+### 4. Eksekusi Rangkaian Uji Otomatis (Automated Unit Tests)
+```bash
+pytest tests/test_models.py -v
 ```
 
 ---

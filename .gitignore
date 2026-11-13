@@ -5,7 +5,7 @@ __pycache__/
 
 # Temporary PDFs and testing scraps
 tmp_*
-test_*
+test_*.pdf
 *.tmp
 
 # Playwright & browser artifacts
