@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary PDFs and testing scraps
+tmp_*
+test_*
+*.tmp
+
+# Playwright & browser artifacts
+.playwright/
+
+# OS artifacts
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Confidential Academic Documents & Assignment Sources
+makalah/
+Soal/
+Cover/
+data/
+indicators_source/
+scripts/
