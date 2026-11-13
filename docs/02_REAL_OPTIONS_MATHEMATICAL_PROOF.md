@@ -2,7 +2,7 @@
 ## Black-Scholes-Merton (BSM) & Longstaff-Schwartz Least Squares Monte Carlo (LSMC)
 **Penulis:** Tim Peneliti Keuangan Kelompok 1 — Program Magister Manajemen Teknologi (MMT) Institut Teknologi Sepuluh Nopember (ITS), Surabaya  
 **Entitas Objek:** PT Barito Renewables Energy Tbk (BREN) — Proyek PLTP WKP Hamiding 60 MW & Masterplan 130 MW  
-**Konteks Riset:** Studi Kasus Penganggaran Modal Lanjutan PT Barito Renewables Energy Tbk (BREN)
+**Konteks Riset:** Studi Kasus Penganggaran Modal PT Barito Renewables Energy Tbk (BREN) — Mata Kuliah Manajemen Keuangan
 
 ---
 
@@ -80,3 +80,16 @@ $$V_{\text{abandon}} = \mathbf{+\text{USD } 28,40\text{ Juta}}$$
 | **Monetisasi Karbon** | SPE-GRK IDXCarbon (POJK 14/2023) | $+\text{USD } 18,52\text{M}$ | Menangkap pendapatan sampingan hijau |
 | **Opsi Riil Ekspansi** | BSM & LSMC (Masterplan 130 MW) | $+\text{USD } 142,10\text{M}$ | Menangkap nilai upside tersembunyi |
 | **Total Strategic NPV** | **Valuation Waterfall Terpadu** | $\mathbf{+\text{USD } 222,13\text{M}}$ | **Keputusan: SANGAT LAYAK (INVEST)** |
+
+---
+
+### 5. Visualisasi Valuasi Opsi Riil Multitahap
+
+<p align="center">
+  <img src="../grafik/Gambar_10_Valuasi_Opsi_Riil_Ekspansi_Hamiding_130MW.png" width="48%" alt="Valuasi Opsi Riil Ekspansi Hamiding 130 MW" />
+  <img src="../grafik/Gambar_16_Least_Squares_Monte_Carlo_Optimal_Stopping.png" width="48%" alt="Least Squares Monte Carlo Optimal Stopping" />
+</p>
+
+<p align="center">
+  <img src="../grafik/Gambar_19_Pemetaan_Cadangan_Geotermal_P90_P50_P10_Staging.png" width="70%" alt="Pemetaan Cadangan Geotermal P90 P50 P10 Staging" />
+</p>

@@ -14,11 +14,35 @@
 
 Repositori ini menyajikan program komputasi finansial kuantitatif, simulasi ekonometrika stokastik, serta kertas kerja teknis untuk evaluasi kelayakan investasi **Proyek PLTP WKP Gunung Hamiding 60 MW** (dengan opsi ekspansi masterplan hingga 130 MW) oleh **PT Barito Renewables Energy Tbk (BREN)**. 
 
-Analisis ini mematahkan pendekatan penganggaran modal statis konvensional (*textbook approach*) yang memvonis proyek tidak layak (*unviable*), dan membuktikan secara empiris bahwa proyek ini membukukan **Dynamic Strategic Net Present Value (Expanded NPV) sebesar +USD 87,89 Juta hingga +USD 222,13 Juta**, dengan **Equity Internal Rate of Return (IRR) sebesar 14,39%**, jauh melampaui biaya modal tertimbang proyek (*hurdle rate* WACC 7,10%).
+Analisis ini mematahkan pendekatan penganggaran modal statis konvensional (*textbook approach*) yang memvonis proyek tidak layak (*unviable*), dan membuktikan secara empiris bahwa proyek ini membukukan **Dynamic Strategic Net Present Value (Expanded NPV) sebesar +USD 80,03 Juta hingga +USD 222,13 Juta**, dengan **Equity Internal Rate of Return (IRR) sebesar 14,39%**, jauh melampaui biaya modal tertimbang proyek (*hurdle rate* WACC 7,10%).
+
+<p align="center">
+  <img src="grafik/Gambar_8_Tornado_Diagram_Sensitivitas_NPV.png" width="48%" alt="Tornado Diagram Sensitivitas NPV" />
+  <img src="grafik/Gambar_3_DCF_Cumulative_Cash_Flow_Payback.png" width="48%" alt="Kumulatif Arus Kas & Payback Period" />
+</p>
 
 ---
 
-## 🎯 5 Tesis Utama Pertahanan Finansial (Kelompok 1)
+## 📊 Ringkasan Metrik Finansial Komparatif
+
+| Parameter Evaluasi Finansial | Pendekatan Silabus Kasus (Buku Teks Statis) | Rekonstruksi Finansial Terverifikasi (Kelompok 1) | Varian Deviasi | Dasar Regulasi / Rujukan Ilmiah | Skrip Replikasi |
+| :--- | :---: | :---: | :---: | :--- | :--- |
+| **Kapasitas Efektif Pembangkit** | 60 MW (Tunggal) | **60 MW s.d. 130 MW** (Masterplan 2 Tahap) | +70 MW (Opsi) | Dokumen WKP Hamiding ESDM | `models/03_real_options_lsmc_bsm.py` |
+| **Faktor Kapasitas Riil** | 199,77% *(Anomali Fisika)* | **92,20% s.d. 95,00%** *(Baseload Termal)* | -104,77% | Termodinamika Geotermal | `models/02_monte_carlo_sobol_copula.py` |
+| **Tarif Listrik PPA PLN** | USD 0,097 / kWh | **USD 0,0970 / kWh** (Kontrak 30 Tahun) | Kontrak 30 Th | Perpres No. 112 Tahun 2022 | `models/01_project_finance_dcf.py` |
+| **Struktur Permodalan Proyek** | 100% Ekuitas Korporasi | **70% Utang Hijau : 30% Ekuitas SPV** | Non-Recourse | Sindikasi Bank Hijau Multilateral | `models/01_project_finance_dcf.py` |
+| **Biaya Modal Tertimbang (WACC)**| 10,20% (Statis Holding) | **7,10%** (Project Finance Diskon Greenium) | -310 bps | Model CAPM & Formula Hamada | `models/01_project_finance_dcf.py` |
+| **Beban Depresiasi Th 2026** | USD 28,80 Juta | **USD 0,00** *(Masa Konstruksi/AUC)* | -USD 28,80M | PSAK 216 / IAS 16 Paragraf 55 | `docs/03_ACCOUNTING_TREATMENT_PSAK216.md` |
+| **Net Present Value (NPV)** | **-USD 105,11 Juta** (Ditolak) | **+USD 37,31 Juta** (Base DCF Proyek)<br>**+USD 222,13 Juta** (Enhanced Strategic) | **+USD 142,4M s.d.<br>+USD 327,2M** | DCF Terproteksi & Opsi Riil BSM | `models/01_project_finance_dcf.py` |
+| **Internal Rate of Return (IRR)** | 8,29% | **Project IRR: 12,85% \| Equity IRR: 14,39%** | +610 bps | Model Arus Kas Proyek Terpadu | `models/01_project_finance_dcf.py` |
+| **Simple Payback Period** | 10,64 Tahun | **10,64 Tahun** (Simple) \| **8,33 Tahun** (Discounted) | -2,31 Tahun | Standar Penganggaran Modal | `models/01_project_finance_dcf.py` |
+| **Probabilitas Sukses $P(\text{NPV}>0)$**| 4,8% (Unlevered Stand-alone)| **73,8%** (Terproteksi Sindikasi & Fiskal) | +69,0% | Sobol QMC (16.384 Iterasi) | `models/02_monte_carlo_sobol_copula.py` |
+| **Value at Risk 95% (VaR 95%)** | Ekuitas Terbuka Risiko | **-USD 71,00 Juta** *(Batas Proteksi Kritis)* | Terkendali | Student-t Copula (df = 4) | `models/02_monte_carlo_sobol_copula.py` |
+| **Nilai Kapitalisasi Dividen GGM**| Klaim Tidak Konsisten | **USD 119,17 Juta** (Saat COD 2030)<br>**USD 78,50 Juta** (Nilai Sekarang t=0) | Konsisten 100% | Finite Gordon Model 30 Tahun | `models/05_finite_gordon_dividend.py` |
+
+---
+
+## 🎯 5 Tesis Utama Pertahanan Finansial & Modul Analisis Visual
 
 ```
                      ┌─────────────────────────────────────────────────────────┐
@@ -34,49 +58,104 @@ Analisis ini mematahkan pendekatan penganggaran modal statis konvensional (*text
    BSM: +USD 192,8M    Zero Saji Material    Tax Holiday 10 th   +Rp 14,70/saham     Validasi 30 Thn
 ```
 
-### 1. Optimalisasi Belanja Modal & Teori Opsi Riil (Stage-Gating Protocol)
-- **Koreksi:** Belanja modal Tahap 1 sebesar USD 720 Juta (USD 12,0M/MW) mencakup fasilitas infrastruktur bersama (*shared-platform infrastructure*) senilai USD 180 Juta (transmisi HVTL 150 kV 45 km dan lahan 1.500 ha) yang dirancang untuk mengevakuasi daya hingga **≥ 130 MW**.
-- **Opsi Riil:** Belanja modal marjinal Tahap 2 (ekspansi 70 MW) hanya sebesar USD 380 Juta (USD 5,43M/MW), menurunkan *blended capex* keseluruhan fasilitas 130 MW menjadi **USD 8,46M/MW** (efisiensi 29,5%).
-- **Kuantifikasi:** Formula Black-Scholes-Merton (BSM) dan simulasi numerik Least Squares Monte Carlo (LSMC) ortogonal Laguerre menghasilkan nilai opsi manajerial ekspansi sebesar **USD 192,79 Juta** (PV sebesar **USD 142,10 Juta**).
+---
 
-### 2. Integritas Standar Akuntansi Keuangan (PSAK 216 / IAS 16 & PSAK 223 / IAS 23)
-- **Koreksi:** Pembebanan beban penyusutan mekanis USD 28,8 Juta pada tahun 2026 saat aset masih dalam tahap konstruksi adalah pelanggaran fundamental terhadap **PSAK 216 / IAS 16 Paragraf 55**, yang melarang depresiasi sebelum aset siap beroperasi komersial (COD 2030).
-- **Preservasi Nilai:** Lahan konsesi senilai USD 110 Juta memiliki masa manfaat tak terbatas sehingga tidak dapat disusutkan (Paragraf 58). Koreksi ini mencegah distorsi laba bersih dan pengikisan ekuitas artifisial sebesar **USD 115,20 Juta**.
+### 1. Optimalisasi Belanja Modal & Teori Opsi Riil Multitahap (Masterplan 130 MW)
+- **Koreksi Capex:** Belanja modal Tahap 1 sebesar USD 720 Juta (USD 12,0M/MW) mencakup fasilitas infrastruktur bersama (*shared-platform infrastructure*) senilai USD 180 Juta (transmisi HVTL 150 kV 45 km dan lahan 1.500 ha) yang dirancang untuk mengevakuasi daya hingga **≥ 130 MW**.
+- **Opsi Riil Ekspansi:** Belanja modal marjinal Tahap 2 (ekspansi 70 MW) hanya sebesar USD 140 Juta (USD 2,0M/MW), menurunkan *blended capex* keseluruhan fasilitas 130 MW menjadi **USD 6,62M/MW**.
+- **Kuantifikasi Opsi:** Formula Black-Scholes-Merton (BSM) dengan $S_0 = \text{USD } 257,60\text{M}$, $K = \text{USD } 140,00\text{M}$, $T = 3,0\text{ tahun}$, $\sigma = 32,50\%$, dan $r = 4,50\%$ menghasilkan $d_1 = 1,141$, $d_2 = 0,582$, serta nilai opsi beli Eropa $C_0 = \mathbf{\text{USD } 192,79\text{ Juta}}$ (Nilai Sekarang pada WACC 7,10% adalah **+USD 142,10 Juta**).
+- **Opsi Pengabaian Dini (Gate 1):** Menggunakan algoritma Longstaff-Schwartz Least Squares Monte Carlo (LSMC) dengan polinomial Laguerre derajat 2, hak menghentikan proyek pasca pemboran eksplorasi awal menyelamatkan sisa capex USD 630 Juta dan memiliki nilai proteksi sebesar **+USD 28,40 Juta**.
 
-### 3. Rekonstruksi WACC Project Finance, Insentif Fiskal, dan Monetisasi Karbon
-- **Koreksi:** Penggunaan WACC korporasi holding 10,20% keliru untuk pembiayaan proyek non-recourse. Struktur modal target 70% Utang Sindikasi Hijau multilateral : 30% Ekuitas menurunkan WACC menjadi **7,10%** (Hamada formula dengan $t = 0\%$, re-levered beta 1,164).
-- **Proteksi Fiskal & Karbon:** Fasilitas *Tax Holiday* pembebasan PPh Badan 100% selama 10 tahun (Pasal 2 ayat 3 PMK 130/PMK.010/2020 untuk investasi Rp 5–15 Triliun) ditambah diskon 50% 2 tahun transisi, serta monetisasi kredit karbon SPE-GRK di IDXCarbon sebesar USD 3,20 s.d. USD 6,72 Juta/tahun (pada USD 8/ton $\text{CO}_2\text{e}$) mentransformasi nilai proyek:
-  - **Dynamic NPV:** Melonjak dari defisit -USD 105,11 Juta menjadi **+USD 80,03 Juta** (Base Mitigated) hingga **+USD 222,13 Juta** (Total Strategic).
-  - **Equity IRR:** Mencapai **14,39%** (*Project IRR* 12,85%).
-  - **Discounted Payback Period:** Tuntas dalam **8,33 tahun** komersial.
+<p align="center">
+  <img src="grafik/Gambar_10_Valuasi_Opsi_Riil_Ekspansi_Hamiding_130MW.png" width="48%" alt="Valuasi Opsi Riil Ekspansi Hamiding 130 MW" />
+  <img src="grafik/Gambar_16_Least_Squares_Monte_Carlo_Optimal_Stopping.png" width="48%" alt="Least Squares Monte Carlo Optimal Stopping" />
+</p>
 
-### 4. Analisis Mikrostruktur Pasar Modal & Fenomena *Float Squeeze* (Free Float 3,01%)
-- **Koreksi:** Kelipatan valuasi P/E 132,4x dan EV/EBITDA 48,5x saham BREN bukan merupakan cerminan gelembung fundamental murni (*pure speculative bubble*), melainkan dinamika mikrostruktur pasokan akibat konsentrasi kepemilikan 96,99% (Barito Pacific 64,666%, Green Era Energy 23,603%, Prajogo Pangestu & afiliasi 8,721%) dengan *free float* publik efektif hanya **3,01%**.
-- **Dampak Intrinsik:** Proyek Hamiding menyuntikkan tambahan nilai intrinsik sebesar **+Rp 4,52 per saham** (Base DCF) hingga **+Rp 26,91 per saham** (Total Strategic), dengan risiko dilusi neraca induk 0,00% via isolasi SPV Non-Recourse.
-
-### 5. Preservasi Solvabilitas Konstruksi & Rekonsiliasi Gordon Growth Model (GGM)
-- **Koreksi:** Tuntutan pembagian dividen tunai selama fase konstruksi (saat pendapatan operasional masih USD 0,00) ditolak keras demi menjaga solvabilitas dan kovenan sindikasi perbankan.
-- **Kebijakan Dividen Residual:** Dividen baru dibagikan pasca-COD 2030 berbasis FCFE positif. Kovenan perbankan Debt Service Coverage Ratio (DSCR) terjaga aman pada level rerata **1,45x s.d. 1,75x** (di atas batas kovenan proyek $\ge 1,30\times$).
-- **Validasi GGM:** Model Gordon abadi ($P_{2030} = D_1 / (K_e - g) = \text{USD } 119,17\text{ Juta}$ atau PV sebesar **USD 78,50 Juta**) dikonfirmasi valid melalui model anuitas konsesi terbatas 30 tahun (**USD 93,32 Juta**).
+*Dokumentasi Lengkap:* [Whitepaper 02: Pembuktian Matematis Valuasi Opsi Riil BSM & LSMC](docs/02_REAL_OPTIONS_MATHEMATICAL_PROOF.md) | *Kode:* `models/03_real_options_lsmc_bsm.py`
 
 ---
 
-## 📊 Ringkasan Metrik Finansial Komparatif
+### 2. Rekonstruksi DCF Terpadu, Insentif Fiskal Tax Holiday, dan Monetisasi Karbon
+- **Struktur Pendanaan Non-Recourse:** 70% Utang Sindikasi Hijau multilateral (kupon 4,50%) : 30% Ekuitas Mandiri SPV mengisolasi neraca induk BREN.
+- **Biaya Modal Proyek (WACC 7,10%):** Model Hamada merekonsiliasi WACC holding 10,20% menjadi **7,10%** proyek. Penurunan WACC ini menyumbang pembalikan nilai sebesar **+USD 142,42 Juta**.
+- **Insentif Fiskal (PMK 130/2020):** Fasilitas pembebasan PPh Badan 100% (*Tax Holiday*) selama 10 tahun (Pasal 2 ayat 3 untuk investasi Rp 5–15 Triliun) dan diskon 50% selama 2 tahun transisi menyumbang nilai tambah **+USD 24,20 Juta**.
+- **Monetisasi Karbon (POJK 14/2023):** Penjualan 399.456 ton $\text{CO}_2\text{e}$ per tahun di IDXCarbon pada harga USD 8,00/ton memberikan aliran pendapatan sampingan USD 3,20 Juta/tahun, menyumbang nilai sekarang sebesar **+USD 18,52 Juta**.
 
-| Parameter Evaluasi Finansial | Pendekatan Silabus Kasus (Buku Teks Statis) | Rekonstruksi Finansial Terverifikasi (Kelompok 1) | Varian Deviasi | Dasar Regulasi / Rujukan Ilmiah |
-| :--- | :---: | :---: | :---: | :--- |
-| **Kapasitas Efektif Pembangkit** | 60 MW (Tunggal) | **60 MW s.d. 130 MW** (Masterplan 2 Tahap) | +70 MW (Opsi) | Dokumen WKP Hamiding ESDM |
-| **Faktor Kapasitas Riil** | 199,77% *(Anomali Fisika)* | **92,20% s.d. 95,00%** *(Baseload Termal)* | -104,77% | Termodinamika Geotermal |
-| **Tarif Listrik PPA PLN** | USD 0,097 / kWh | **USD 0,0970 / kWh** (Kontrak 30 Tahun) | Kontrak 30 Th | Perpres No. 112 Tahun 2022 |
-| **Struktur Permodalan Proyek** | 100% Ekuitas Korporasi | **70% Utang Hijau : 30% Ekuitas SPV** | Non-Recourse | Sindikasi Bank Hijau Multilateral |
-| **Biaya Modal Tertimbang (WACC)**| 10,20% (Statis Holding) | **7,10%** (Project Finance Diskon Greenium) | -310 bps | Model CAPM & Formula Hamada |
-| **Beban Depresiasi Th 2026** | USD 28,80 Juta | **USD 0,00** *(Masa Konstruksi/AUC)* | -USD 28,80M | PSAK 216 / IAS 16 Paragraf 55 |
-| **Net Present Value (NPV)** | **-USD 105,11 Juta** (Ditolak) | **+USD 37,31 Juta** (Base DCF Proyek)<br>**+USD 222,13 Juta** (Enhanced Strategic) | **+USD 142,4M s.d.<br>+USD 327,2M** | DCF Terproteksi & Opsi Riil BSM |
-| **Internal Rate of Return (IRR)** | 8,29% | **Project IRR: 12,85% \| Equity IRR: 14,39%** | +610 bps | Model Arus Kas Proyek Terpadu |
-| **Simple Payback Period** | 10,64 Tahun | **10,64 Tahun** (Simple) \| **8,33 Tahun** (Discounted) | -2,31 Tahun | Standar Penganggaran Modal |
-| **Probabilitas Sukses $P(\text{NPV}>0)$**| 4,8% (Unlevered Stand-alone)| **73,8%** (Terproteksi Sindikasi & Fiskal) | +69,0% | Sobol QMC (16.384 Iterasi) |
-| **Value at Risk 95% (VaR 95%)** | Ekuitas Terbuka Risiko | **-USD 71,00 Juta** *(Batas Proteksi Kritis)* | Terkendali | Student-t Copula (df = 4) |
-| **Nilai Kapitalisasi Dividen GGM**| Klaim Tidak Konsisten | **USD 119,17 Juta** (Saat COD 2030)<br>**USD 78,50 Juta** (Nilai Sekarang t=0) | Konsisten 100% | Finite Gordon Model 30 Tahun |
+<p align="center">
+  <img src="grafik/Gambar_17_Dampak_Fiskal_Tax_Holiday_PMK130_2020.png" width="48%" alt="Dampak Fiskal Tax Holiday PMK 130/2020" />
+  <img src="grafik/Gambar_5_Dampak_Monetisasi_Kredit_Karbon_Terhadap_NPV_IRR.png" width="48%" alt="Dampak Monetisasi Kredit Karbon Terhadap NPV & IRR" />
+</p>
+
+<p align="center">
+  <img src="grafik/Gambar_4_Heatmap_Sensitivitas_NPV_WACC_vs_Tarif.png" width="70%" alt="Heatmap Sensitivitas NPV terhadap WACC dan Tarif PPA" />
+</p>
+
+*Kode Replikasi:* `models/01_project_finance_dcf.py`
+
+---
+
+### 3. Ekonometrika Stokastik Multivariate (Scrambled Sobol QMC & Student-t Copula)
+- **Arsitektur Sampling:** Pembangkitan 16.384 iterasi berbasis deret kuasi-acak Sobol dengan pengacakan Owen (*Owen Scrambling*) mencapai tingkat konvergensi galat mendekati $O(N^{-1})$.
+- **Dependensi Non-Linier Ekor Gemuk:** Student-t Copula ($v=4$) menangkap dependensi ekor bersama (*joint tail risk*) antara penurunan entalpi hidrotermal (240–270°C), volatilitas kurs JISDOR (rerata Rp 16.205 s.d. stres Rp 18.190/USD), dan eskalasi biaya operasional.
+- **Hasil Stokastik:**
+  - Probabilitas keberhasilan finansial $P(\text{NPV} > 0)$ melonjak dari **4,8%** (tanpa mitigasi) menjadi **73,8%** (dengan struktur mitigasi terpadu).
+  - *Value at Risk* (VaR 95% Ekuitas) terukur pada **-USD 71,0 Juta**, dengan *Conditional VaR* (CVaR 95%) sebesar **-USD 88,4 Juta**, terbukti aman diserap oleh profil arus kas BREN.
+
+<p align="center">
+  <img src="grafik/Gambar_15_SOTA_Copula_Sobol_vs_Standard_MCS.png" width="48%" alt="SOTA Copula Sobol vs Standard MCS" />
+  <img src="grafik/Gambar_9_Simulasi_Monte_Carlo_Distribusi_NPV_10000_Iterasi.png" width="48%" alt="Distribusi Probabilitas Monte Carlo NPV" />
+</p>
+
+<p align="center">
+  <img src="grafik/Gambar_14_MCMC_Bayesian_Parameter_Inference.png" width="48%" alt="MCMC Bayesian Parameter Inference" />
+  <img src="grafik/Gambar_18_Analisis_Sensitivitas_Kurs_JISDOR_FX_Natural_Hedge.png" width="48%" alt="Sensitivitas Kurs JISDOR & Natural Hedge" />
+</p>
+
+*Dokumentasi Lengkap:* [Whitepaper 01: Ekonometrika Stokastik Multivariate Sobol QMC & Copula](docs/01_SOBOL_QMC_COPULA_ECONOMETRICS.md) | *Kode:* `models/02_monte_carlo_sobol_copula.py`
+
+---
+
+### 4. Analisis Mikrostruktur Pasar Modal, Keterbatasan Free Float (3,01%) & Peer Multiples
+- **Struktur Kepemilikan Konsentrasi Tinggi:** PT Barito Pacific Tbk menguasai 64,666%, Green Era Energy Pte. Ltd. menguasai 23,603%, dan Prajogo Pangestu & afiliasi menguasai 8,721%. Total kepemilikan pengendali mencapai **96,99%**, menyisakan *free float* publik efektif hanya **3,01%** (4,03 miliar lembar saham).
+- **Dinamika Likuiditas Pasar:** Keterbatasan pasokan mengambang memicu elastisitas harga ekstrem dan gesekan kriteria indeks global (FTSE Russell / MSCI).
+- **Valuasi Relatif Peer Global:** Saham BREN diperdagangkan pada kelipatan EV/EBITDA 48,5x dan P/E 132,4x, merefleksikan premi kelangkaan (*scarcity premium*) portofolio EBT murni (*pure-play geothermal*) terbesar di Asia Tenggara dibandingkan peer (PGEO 10,8x, ACEN 14,2x, Ormat 12,5x).
+- **Penciptaan Nilai Pemegang Saham:** Proyek Hamiding menyumbang peningkatan nilai intrinsik sebesar **+Rp 4,52/saham** (Base DCF) hingga **+Rp 26,91/saham** (Total Strategic), dengan risiko dilusi neraca induk 0,00% berkat pembiayaan *non-recourse*.
+
+<p align="center">
+  <img src="grafik/Gambar_1_Perbandingan_Multiples_BREN_vs_Peers.png" width="48%" alt="Perbandingan Multiples Valuasi BREN vs Peers" />
+  <img src="grafik/Gambar_11_Komparasi_LCOE_Geothermal_vs_Fosil_dan_Solar.png" width="48%" alt="Komparasi LCOE Geothermal vs Fosil dan Solar" />
+</p>
+
+<p align="center">
+  <img src="grafik/Gambar_20_Vela_BREN_TradingView_PineScript_Valuation.png" width="75%" alt="TradingView PineScript Microstructure Valuation BREN" />
+</p>
+
+*Dokumentasi Lengkap:* [Whitepaper 04: Mikrostruktur Pasar, Free Float, dan Valuasi Peer](docs/04_MARKET_MICROSTRUCTURE_CORNERED.md) | *Kode:* `models/04_market_microstructure_float.py`
+
+---
+
+### 5. Integritas Akuntansi PSAK 216 / 223, Kovenan DSCR, dan Kebijakan Dividen Residual
+- **Standar Akuntansi PSAK 216 / IAS 16:** Beban depresiasi selama masa konstruksi (2026–2029) wajib dicatat tepat **USD 0,00** karena aset masih berstatus Aset Dalam Penyelesaian (*Asset Under Construction* / AUC). Lahan konsesi senilai USD 110 Juta tidak dapat disusutkan (Paragraf 58).
+- **Kapitalisasi Bunga PSAK 223 / IAS 23:** Seluruh beban bunga konstruksi (*Interest During Construction* / IDC) dikapitalisasi ke nilai perolehan aset.
+- **Larangan Dividen Konstruksi:** Membagikan dividen tunai saat pendapatan operasional USD 0,00 melanggar Pasal 70–71 UU No. 40 Tahun 2007 (dividen hanya boleh dibagikan dari saldo laba positif) dan memicu wanprestasi atas kovenan utang bank (*Dividend Lock-up Provision*).
+- **Kebijakan Dividen Residual Pasca-COD:** Dividen tunai dibagikan mulai tahun 2030 berbasis FCFE positif setelah pemenuhan amortisasi utang dan cadangan DSRA 6 bulan. Kovenan perbankan *Debt Service Coverage Ratio* (DSCR) terjaga aman pada rerata **1,45x s.d. 1,75x** (di atas kovenan batas minimum proyek $\ge 1,30\times$).
+- **Rekonsiliasi Gordon Growth Model (GGM):** Formula Gordon abadi ($P_0 = D_1 / (K_e - g) = \text{USD } 119,17\text{ Juta}$ atau PV sebesar **USD 78,50 Juta**) terbukti konsisten dengan model konsesi horizon terbatas 30 tahun (**USD 93,32 Juta**).
+
+<p align="center">
+  <img src="grafik/Gambar_2_Asset_Valuation_Depresiasi_Garis_Lurus.png" width="48%" alt="Asset Valuation Depresiasi Garis Lurus PSAK 216" />
+  <img src="grafik/Gambar_12_Monte_Carlo_DSCR_Debt_Service_Coverage.png" width="48%" alt="Simulasi Monte Carlo DSCR Debt Service Coverage" />
+</p>
+
+<p align="center">
+  <img src="grafik/Gambar_7_Kebijakan_Dividen_Residual_vs_Capex_Ekspansi.png" width="48%" alt="Kebijakan Dividen Residual vs Capex Ekspansi" />
+  <img src="grafik/Gambar_6_Gordon_Growth_Model_Sensitivity_Ke_vs_g.png" width="48%" alt="Sensitivitas Gordon Growth Model Ke vs g" />
+</p>
+
+<p align="center">
+  <img src="grafik/Gambar_13_Monte_Carlo_Stochastic_Dividend_Sustainability.png" width="70%" alt="Simulasi Stokastik Keberlanjutan Dividen FCFE" />
+</p>
+
+*Dokumentasi Lengkap:* [Whitepaper 03: Tata Kelola Akuntansi PSAK 216 & Kovenan Finansial](docs/03_ACCOUNTING_TREATMENT_PSAK216.md) | *Kode:* `models/05_finite_gordon_dividend.py`
 
 ---
 
@@ -84,8 +163,8 @@ Analisis ini mematahkan pendekatan penganggaran modal statis konvensional (*text
 
 ```
 BREN-141126/
-├── README.md                                  # Dokumentasi utama proyek & ringkasan eksekutif
-├── requirements.txt                           # Dependensi pustaka komputasi Python
+├── README.md                                  # Dokumentasi komprehensif proyek & hasil analisis visual
+├── requirements.txt                           # Dependensi pustaka komputasi Python (numpy, scipy)
 ├── LICENSE                                    # Lisensi terbuka MIT License
 ├── .gitignore                                 # Filter privasi berkas internal & rahasia
 │
@@ -102,7 +181,7 @@ BREN-141126/
 │   ├── 03_ACCOUNTING_TREATMENT_PSAK216.md     # Rekonsiliasi akuntansi kapitalisasi IDC/AUC
 │   └── 04_MARKET_MICROSTRUCTURE_CORNERED.md   # Kajian empiris likuiditas FTSE Russell BREN
 │
-└── grafik/                                    # Visualisasi & Diagram Analisis Resolusi Tinggi
+└── grafik/                                    # 20 Visualisasi & Diagram Analisis Resolusi Tinggi
     ├── Gambar_1_Perbandingan_Multiples_BREN_vs_Peers.png
     ├── Gambar_2_Asset_Valuation_Depresiasi_Garis_Lurus.png
     ├── Gambar_3_DCF_Cumulative_Cash_Flow_Payback.png
@@ -113,7 +192,16 @@ BREN-141126/
     ├── Gambar_8_Tornado_Diagram_Sensitivitas_NPV.png
     ├── Gambar_9_Simulasi_Monte_Carlo_Distribusi_NPV_10000_Iterasi.png
     ├── Gambar_10_Valuasi_Opsi_Riil_Ekspansi_Hamiding_130MW.png
-    └── ... (20 Grafik Analisis Kuantitatif Lengkap)
+    ├── Gambar_11_Komparasi_LCOE_Geothermal_vs_Fosil_dan_Solar.png
+    ├── Gambar_12_Monte_Carlo_DSCR_Debt_Service_Coverage.png
+    ├── Gambar_13_Monte_Carlo_Stochastic_Dividend_Sustainability.png
+    ├── Gambar_14_MCMC_Bayesian_Parameter_Inference.png
+    ├── Gambar_15_SOTA_Copula_Sobol_vs_Standard_MCS.png
+    ├── Gambar_16_Least_Squares_Monte_Carlo_Optimal_Stopping.png
+    ├── Gambar_17_Dampak_Fiskal_Tax_Holiday_PMK130_2020.png
+    ├── Gambar_18_Analisis_Sensitivitas_Kurs_JISDOR_FX_Natural_Hedge.png
+    ├── Gambar_19_Pemetaan_Cadangan_Geotermal_P90_P50_P10_Staging.png
+    └── Gambar_20_Vela_BREN_TradingView_PineScript_Valuation.png
 ```
 
 ---

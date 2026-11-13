@@ -22,7 +22,7 @@ def run_sobol_copula_simulation(n_simulations=16384, random_seed=42):
     
     print("=" * 80)
     print("PROGRAM MAGISTER MANAJEMEN TEKNOLOGI (MMT) INSTITUT TEKNOLOGI SEPULUH NOPEMBER (ITS), SURABAYA")
-    print("MANAJEMEN KEUANGAN LANJUTAN - KELOMPOK 1")
+    print("MANAJEMEN KEUANGAN - KELOMPOK 1")
     print("MODEL 02: SCRAMBLED SOBOL QUASI-MONTE CARLO & STUDENT-T COPULA ENGINE")
     print("=" * 80)
     print(f"\n[1] Konfigurasi Simulasi Stokastik:")

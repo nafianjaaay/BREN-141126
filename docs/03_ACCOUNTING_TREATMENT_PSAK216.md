@@ -2,7 +2,7 @@
 ## Perlakuan Aset Dalam Penyelesaian (PSAK 216), Kapitalisasi Bunga Konstruksi (PSAK 223), dan Kovenan Dividen
 **Penulis:** Tim Peneliti Keuangan Kelompok 1 — Program Magister Manajemen Teknologi (MMT) Institut Teknologi Sepuluh Nopember (ITS), Surabaya  
 **Entitas Objek:** PT Barito Renewables Energy Tbk (BREN) — Proyek PLTP WKP Hamiding 60 MW & Masterplan 130 MW  
-**Konteks Riset:** Studi Kasus Penganggaran Modal Lanjutan PT Barito Renewables Energy Tbk (BREN)
+**Konteks Riset:** Studi Kasus Penganggaran Modal PT Barito Renewables Energy Tbk (BREN) — Mata Kuliah Manajemen Keuangan
 
 ---
 
@@ -67,3 +67,17 @@ Untuk mengharmonisasikan ekspektasi imbal hasil pemegang saham publik BREN denga
 $$\text{Dividen Maksimum}(t) = \max \left( 0, \text{FCFE}(t) - \Delta \text{DSRA}(t) - \text{Capex Pemeliharaan}(t) \right)$$
 
 Dengan Dividend Payout Ratio terkalibrasi sebesar **35% – 50%** dari Arus Kas Bebas Ekuitas (*Free Cash Flow to Equity*), proyek Hamiding mampu memberikan aliran dividen stabil sebesar **USD 12,0 Juta – USD 18,5 Juta per tahun** mulai tahun 2030 hingga 2059 tanpa sekalipun melanggar kovenan bank.
+
+---
+
+### 6. Visualisasi Tata Kelola Akuntansi & Kovenan Finansial
+
+<p align="center">
+  <img src="../grafik/Gambar_2_Asset_Valuation_Depresiasi_Garis_Lurus.png" width="48%" alt="Asset Valuation Depresiasi Garis Lurus PSAK 216" />
+  <img src="../grafik/Gambar_12_Monte_Carlo_DSCR_Debt_Service_Coverage.png" width="48%" alt="Simulasi Monte Carlo DSCR Debt Service Coverage" />
+</p>
+
+<p align="center">
+  <img src="../grafik/Gambar_7_Kebijakan_Dividen_Residual_vs_Capex_Ekspansi.png" width="48%" alt="Kebijakan Dividen Residual vs Capex Ekspansi" />
+  <img src="../grafik/Gambar_13_Monte_Carlo_Stochastic_Dividend_Sustainability.png" width="48%" alt="Simulasi Stokastik Keberlanjutan Dividen FCFE" />
+</p>

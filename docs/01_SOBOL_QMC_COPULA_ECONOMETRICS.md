@@ -2,7 +2,7 @@
 ## Scrambled Sobol Quasi-Monte Carlo (QMC) & Student-t Copula Non-Linear
 **Penulis:** Tim Peneliti Keuangan Kelompok 1 — Program Magister Manajemen Teknologi (MMT) Institut Teknologi Sepuluh Nopember (ITS), Surabaya  
 **Entitas Objek:** PT Barito Renewables Energy Tbk (BREN) — Proyek PLTP WKP Hamiding 60 MW & Masterplan 130 MW  
-**Konteks Riset:** Studi Kasus Penganggaran Modal Lanjutan PT Barito Renewables Energy Tbk (BREN)
+**Konteks Riset:** Studi Kasus Penganggaran Modal PT Barito Renewables Energy Tbk (BREN) — Mata Kuliah Manajemen Keuangan
 
 ---
 
@@ -75,3 +75,17 @@ TEMUAN EKONOMETRIKA STOKASTIK KELOMPOK 1:
 1. **Model Statis Silabus Sangat Menyesatkan:** Probabilitas bahwa proyek menghasilkan nilai tambah di bawah struktur statis silabus hanya **4,8%**. Menjalankan proyek tanpa restrukturisasi modal dan instrumen opsi riil adalah tindakan spekulatif berisiko tinggi.
 2. **Mitigasi Terintegrasi Membalikkan Asimetri:** Dengan menerapkan skema pembiayaan proyek (*non-recourse project finance* 70:30), fasilitas *tax holiday* 10 tahun (PMK 130/2020), dan monetisasi kredit karbon, probabilitas sukses melonjak drastis menjadi **73,8%**.
 3. **Penyangga Risiko Ekuitas Terjamin:** Risiko kerugian ekuitas maksimum pada tingkat keyakinan 95% adalah **USD 71,0 Juta**, terlindungi sepenuhnya oleh arus kas operasional entitas induk dan cadangan kas SPV Hamiding.
+
+---
+
+### 6. Visualisasi Hasil Simulasi Ekonometrika
+
+<p align="center">
+  <img src="../grafik/Gambar_15_SOTA_Copula_Sobol_vs_Standard_MCS.png" width="48%" alt="SOTA Copula Sobol vs Standard MCS" />
+  <img src="../grafik/Gambar_9_Simulasi_Monte_Carlo_Distribusi_NPV_10000_Iterasi.png" width="48%" alt="Distribusi Probabilitas Monte Carlo NPV" />
+</p>
+
+<p align="center">
+  <img src="../grafik/Gambar_14_MCMC_Bayesian_Parameter_Inference.png" width="48%" alt="MCMC Bayesian Parameter Inference" />
+  <img src="../grafik/Gambar_18_Analisis_Sensitivitas_Kurs_JISDOR_FX_Natural_Hedge.png" width="48%" alt="Sensitivitas Kurs JISDOR & Natural Hedge" />
+</p>

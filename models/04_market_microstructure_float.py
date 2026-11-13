@@ -18,7 +18,7 @@ import numpy as np
 def run_market_microstructure_analysis():
     print("=" * 80)
     print("PROGRAM MAGISTER MANAJEMEN TEKNOLOGI (MMT) INSTITUT TEKNOLOGI SEPULUH NOPEMBER (ITS), SURABAYA")
-    print("MANAJEMEN KEUANGAN LANJUTAN - KELOMPOK 1")
+    print("MANAJEMEN KEUANGAN - KELOMPOK 1")
     print("MODEL 04: MARKET MICROSTRUCTURE, FREE FLOAT CONSTRAINT & PEER MULTIPLES")
     print("=" * 80)
 

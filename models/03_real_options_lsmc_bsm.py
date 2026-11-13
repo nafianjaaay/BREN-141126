@@ -126,7 +126,7 @@ def calculate_lsmc_american_option(n_paths=10000, n_steps=6, seed=42):
 def main():
     print("=" * 80)
     print("PROGRAM MAGISTER MANAJEMEN TEKNOLOGI (MMT) INSTITUT TEKNOLOGI SEPULUH NOPEMBER (ITS), SURABAYA")
-    print("MANAJEMEN KEUANGAN LANJUTAN - KELOMPOK 1")
+    print("MANAJEMEN KEUANGAN - KELOMPOK 1")
     print("MODEL 03: MULTI-STAGE REAL OPTIONS VALUATION ENGINE (BSM & LSMC)")
     print("=" * 80)
     
